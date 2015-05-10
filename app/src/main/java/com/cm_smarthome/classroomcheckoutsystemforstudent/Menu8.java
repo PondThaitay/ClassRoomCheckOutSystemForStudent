@@ -77,8 +77,6 @@ public class Menu8 extends Fragment {
                     im = "2";
                 } else if (STATUS == 1) {
                     im = "1";
-                } else if (STATUS == 0) {
-                    im = "0";
                 }
                 intent.putExtra("STATUS", "1");
                 intent.putExtra("IM", im);

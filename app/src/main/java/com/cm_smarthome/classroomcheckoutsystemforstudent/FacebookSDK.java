@@ -128,18 +128,14 @@ public class FacebookSDK extends FragmentActivity {
 
             if (im.equals("3")) {
                 img = BitmapFactory.decodeResource(getResources(),
-                        R.drawable.better);
+                        R.drawable.best);
             } else if (im.equals("2")) {
                 img = BitmapFactory.decodeResource(getResources(),
-                        R.drawable.best);
+                        R.drawable.better);
             } else if (im.equals("1")) {
                 img = BitmapFactory.decodeResource(getResources(),
                         R.drawable.good);
-            } else if (im.equals("0")) {
-                img = BitmapFactory.decodeResource(getResources(),
-                        R.mipmap.ic_launcher);
             }
-
             Request uploadRequest = Request.newUploadPhotoRequest(
                     Session.getActiveSession(), img, new Request.Callback() {
                         @Override
