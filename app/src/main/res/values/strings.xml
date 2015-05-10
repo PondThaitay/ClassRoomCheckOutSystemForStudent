@@ -2,15 +2,53 @@
     <string name="app_name">CRFS</string>
 
     <string name="title_section1">Profile</string>
+    <string name="title_section6">Study Schedule</string>
     <string name="title_section2">Scan QR Code</string>
     <string name="title_section3">Shake It</string>
     <string name="title_section4">Mini Qiz</string>
-    <string name="title_section5">Maps</string>
+    <string name="title_section5">Your Here Now</string>
+    <string name="title_section8">Studied Rate</string>
+
+    <string name="Q1">ข้อใดไม่ใช่ ขั้นตอนหลักในการทำงานของคอมพิวเตอร์ ?</string>
+    <string name="ans1_1">ประมวลผล</string>
+    <string name="ans1_2">รับข้อมูล</string>
+    <string name="ans1_3">นำข้อมูลเข้า</string>
+    <string name="ans1_4">แสดงผลลัพธ์</string>
+
+    <string name="Q2">หน่วยข้อมูลที่เล็กที่สุดในระบบคอมพิวเตอร์เรียกว่า ?</string>
+    <string name="ans2_1">เร็คคอร์ด</string>
+    <string name="ans2_2">ไบต์</string>
+    <string name="ans2_3">ฟิลด์</string>
+    <string name="ans2_4">บิต</string>
+
+    <string name="Q3">สัญญาณในคอมพิวเตอร์เป็นสัญญาณชนิดใด ?</string>
+    <string name="ans3_1">อนาล็อก</string>
+    <string name="ans3_2">ดิจิตอล</string>
+    <string name="ans3_3">ไฮบริด</string>
+    <string name="ans3_4">ไฟฟ้า</string>
+
+    <string name="Q4">ผู้ที่ทำหน้าที่บริหารฐานข้อมูล จะทำหน้าที่คล้ายกับใคร ?</string>
+    <string name="ans4_1">เจ้าหน้าที่เขียนโปรแกรม</string>
+    <string name="ans4_2">ผู้ใช้</string>
+    <string name="ans4_3">หัวหน้าฝ่ายคอมพิวเตอร์</string>
+    <string name="ans4_4">นักวิเคราะห์ระบบ</string>
+
+    <string name="Q5">ระบบเครือข่ายประเภทใดในปัจจุบันเป็นที่นิยมมากที่สุด ?</string>
+    <string name="ans5_1">WAN</string>
+    <string name="ans5_2">LAN และ WAN</string>
+    <string name="ans5_3">SAN</string>
+    <string name="ans5_4">Ring</string>
+
+    <string name="Submit">ตรวจคำตอบ</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_example"></string>
+
+    <string name="app_id">1634938090083796</string>
+    <string name="update_status">Post Status</string>
+    <string name="post_image">Post Image</string>
 
     <string name="action_settings">Coming Soon</string>
 </resources>

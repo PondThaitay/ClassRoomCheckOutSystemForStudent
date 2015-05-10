@@ -1,6 +1,5 @@
 package com.cm_smarthome.classroomcheckoutsystemforstudent;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;

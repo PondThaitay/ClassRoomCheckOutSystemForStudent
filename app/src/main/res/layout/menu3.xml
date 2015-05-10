@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#673AB7"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="218dp"
+        android:layout_height="203dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:layout_weight="0.11"
+        android:background="@drawable/shake" />
 
     <TextView
+        android:id="@+id/tvMenu3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="Please... Shake Device for Check in!"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="3"
-        android:id="@+id/tvMenu3"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="10dp" />
+        android:textColor="#fff9fff3"
+        android:textSize="30dp" />
+
 </LinearLayout>
