@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#673AB7"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:textColor="#FF0000">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/tvH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ประวัติการเช็คชื่อ"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#fff9fff3" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listViewH"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:background="@android:color/transparent"
+        android:textColor="#FF0000"
+        android:textFilterEnabled="false"></ListView>
+
+</LinearLayout>

@@ -20,9 +20,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/**
- * Created by AdminPond on 5/5/2558.
- */
+
 public class Menu6 extends Fragment {
 
     View rootView;
@@ -46,7 +44,6 @@ public class Menu6 extends Fragment {
     private String TAG = "Menu6";
     private String sID;
     private String sQ;
-    private String sSCORE;
 
     private static final String NO_QIZ = "อาจารย์ยังไม่มีการเปิด Qiz...";
     private SwipeRefreshLayout swipeLayout;

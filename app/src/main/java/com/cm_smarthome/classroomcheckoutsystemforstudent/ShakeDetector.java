@@ -6,6 +6,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.FloatMath;
 
+
 public class ShakeDetector implements SensorEventListener {
 
     private static final float SHAKE_THRESHOLD_GRAVITY = 2.7F;

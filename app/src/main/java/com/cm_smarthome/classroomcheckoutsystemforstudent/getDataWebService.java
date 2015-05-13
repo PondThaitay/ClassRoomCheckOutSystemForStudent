@@ -8,9 +8,7 @@ import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
-/**
- * Created by AdminPond on 5/5/2558.
- */
+
 public class getDataWebService {
 
     private final String RESULT = "RESULT";

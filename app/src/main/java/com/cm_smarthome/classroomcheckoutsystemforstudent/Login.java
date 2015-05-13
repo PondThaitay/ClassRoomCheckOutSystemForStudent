@@ -12,9 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-/**
- * Created by AdminPond on 5/5/2558.
- */
+
 public class Login extends ActionBarActivity {
 
     private static final String TAG = "WEBSERVICE";

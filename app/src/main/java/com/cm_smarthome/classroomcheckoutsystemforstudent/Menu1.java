@@ -18,9 +18,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by AdminPond on 5/5/2558.
- */
+
 public class Menu1 extends Fragment {
 
     View rootView;

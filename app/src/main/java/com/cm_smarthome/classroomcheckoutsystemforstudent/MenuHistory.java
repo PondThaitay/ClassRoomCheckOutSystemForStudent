@@ -1,15 +1,12 @@
 package com.cm_smarthome.classroomcheckoutsystemforstudent;
 
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -33,39 +30,46 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
-public class Menu4 extends Fragment {
+public class MenuHistory extends Fragment {
 
     View rootView;
 
+    getDataWebService webService = new getDataWebService();
+
     private String jsonResult;
     private ListView listView;
-
-    private String SSID;
-    private String AC;
-    private String SE = "1";
+    private String SESSION_ID;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.menu4, container, false);
+        rootView = inflater.inflate(R.layout.menuhistory, container, false);
 
-        SSID = getActivity().getIntent().getStringExtra("sessionID");
-        int year = Calendar.getInstance().get(Calendar.YEAR);
-        year += 543;
-        AC = String.valueOf(year);
+        listView = (ListView) rootView.findViewById(R.id.listViewH);
 
-        listView = (ListView) rootView.findViewById(R.id.listView1);
+        SESSION_ID = getActivity().getIntent().getStringExtra("sessionID");
 
-        JsonReadTask task = new JsonReadTask();
-        task.execute(SSID, AC, SE);
+        myAsyncTaskGetStudentID taskGetStudentID = new myAsyncTaskGetStudentID();
+        taskGetStudentID.execute(SESSION_ID);
 
         return rootView;
+    }
+
+    private class myAsyncTaskGetStudentID extends AsyncTask<String, Void, Void> {
+        @Override
+        protected Void doInBackground(String... params) {
+            webService.getResultBySessionID(params[0]);
+            String studentID = webService.StudentCode;
+            JsonReadTask task = new JsonReadTask();
+            task.execute(studentID);
+            return null;
+        }
+
     }
 
     // Async Task to access the web
@@ -73,12 +77,10 @@ public class Menu4 extends Fragment {
         @Override
         protected String doInBackground(String... params) {
 
-            String url = "http://www.cm-smarthome.com/reg/pond.php";
+            String url = "http://www.cm-smarthome.com/reg/getHistory.php";
 
             ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-            nameValuePairs.add(new BasicNameValuePair("sessionid", params[0]));
-            nameValuePairs.add(new BasicNameValuePair("acadyear", params[1]));
-            nameValuePairs.add(new BasicNameValuePair("semester", params[2]));
+            nameValuePairs.add(new BasicNameValuePair("sID", params[0]));
 
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(url);
@@ -133,17 +135,13 @@ public class Menu4 extends Fragment {
 
             for (int i = 0; i < jsonMainNode.length(); i++) {
                 JSONObject jsonChildNode = jsonMainNode.getJSONObject(i);
-                String name = jsonChildNode.optString("DayOfWeek");
-                String number = jsonChildNode.optString("SubjectCode");
-                String x = jsonChildNode.optString("SubjectName");
-                String x1 = jsonChildNode.optString("StartTime");
-                String x2 = jsonChildNode.optString("EndTime");
-                String x3 = jsonChildNode.optString("RoomNo");
-                String x4 = jsonChildNode.optString("TeacherName");
+                String name = jsonChildNode.optString("SubjectID");
+                String number = jsonChildNode.optString("StudentID");
+                String x = jsonChildNode.optString("Type");
+                String x1 = jsonChildNode.optString("Date");
 
-                String outPut = "วัน : " + name + "\n" + "รหัสวิชา : " + number + "\n" +
-                        "ชื่อวิชา : " + x + "\n" + "เวลา : " + x1 + " - " + x2 + " น." + "\n" +
-                        "ห้อง : " + x3 + "\n" + "อาจารย์ผู้สอน : " + x4.replaceAll(",", "\n");
+                String outPut = "รหัสวิชา : " + name + "\n" + "รหัสนิสิต : " + number + "\n" +
+                        "รูปแบบการเช็คชื่อ : " + x + "\n" + "วัน/เดือน/ปี : " + x1.replaceAll(" ", " เวลา : ");
 
                 employeeList.add(createEmployee("employees", outPut));
 
@@ -157,27 +155,6 @@ public class Menu4 extends Fragment {
                 android.R.layout.simple_list_item_1,
                 new String[]{"employees"}, new int[]{android.R.id.text1});
         listView.setAdapter(simpleAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                HashMap<String, String> map = (HashMap<String, String>) parent.getItemAtPosition(position);
-                String value = map.get("employees");
-                Log.e("GG", value);
-                String[] parts = value.split("\n");
-                String part1 = parts[1];
-                Log.e("GG1", part1);
-                String[] part = part1.split(" : ");
-                String subjectID = part[1];
-                Log.e("GG2", subjectID);
-                subjectID.split(" ");
-                Log.e("", subjectID);
-                Intent intent = new Intent(getActivity(), MenuCheckIn.class);
-                intent.putExtra("SSID", SSID);
-                intent.putExtra("SUJECT_ID", subjectID);
-                startActivity(intent);
-            }
-        });
     }
 
     private HashMap<String, String> createEmployee(String name, String number) {

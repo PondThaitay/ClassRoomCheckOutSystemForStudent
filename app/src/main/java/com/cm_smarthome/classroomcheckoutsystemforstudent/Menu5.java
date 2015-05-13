@@ -20,9 +20,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-/**
- * Created by AdminPond on 5/5/2558.
- */
+
 public class Menu5 extends Fragment {
 
     View rootView;

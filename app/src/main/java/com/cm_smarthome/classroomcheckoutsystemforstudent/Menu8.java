@@ -15,9 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by AdminPond on 5/5/2558.
- */
+
 public class Menu8 extends Fragment {
 
     View rootView;
@@ -77,6 +75,8 @@ public class Menu8 extends Fragment {
                     im = "2";
                 } else if (STATUS == 1) {
                     im = "1";
+                } else if (STATUS == 0) {
+                    im = "0";
                 }
                 intent.putExtra("STATUS", "1");
                 intent.putExtra("IM", im);
@@ -92,8 +92,7 @@ public class Menu8 extends Fragment {
         protected Void doInBackground(String... params) {
             webService.getResultBySessionID(params[0]);
             String studentID = webService.StudentCode;
-            serverDB.getCountQR(studentID);
-            serverDB.getCountShake(studentID);
+            serverDB.getCount(studentID);
             return null;
         }
 
@@ -104,7 +103,7 @@ public class Menu8 extends Fragment {
             imRate.setVisibility(View.VISIBLE);
             btnRate.setVisibility(View.VISIBLE);
 
-            COUNT = serverDB.CountQR + serverDB.CountShake;
+            COUNT = serverDB.Count;
             if (COUNT >= 11) {
                 imRate.setImageResource(R.drawable.best);
                 tvRate.setText("คุณเข้าเรียนเป็นประจำ อยู่ในระดับดีมาก");
@@ -113,13 +112,17 @@ public class Menu8 extends Fragment {
                 imRate.setImageResource(R.drawable.better);
                 tvRate.setText("คุณเข้าเรียนสม่ำเสอม อยู่ในระดับดี");
                 STATUS = 2;
+            } else if (COUNT == 1) {
+                imRate.setImageResource(R.drawable.first);
+                tvRate.setText("คุณเข้าเรียนเป็นครั้งแรก สู้ๆๆ นะ ครับ");
+                STATUS = 1;
             } else {
                 imRate.setImageResource(R.drawable.good);
                 tvRate.setText("คุณเข้าเรียนตามปกติ อยู่ในระดับปานกลาง");
-                STATUS = 1;
+                STATUS = 0;
             }
 
-            Log.e(TAG, (serverDB.CountQR + serverDB.CountShake) + "");
+            Log.e(TAG, serverDB.Count+"");
         }
     }
 }

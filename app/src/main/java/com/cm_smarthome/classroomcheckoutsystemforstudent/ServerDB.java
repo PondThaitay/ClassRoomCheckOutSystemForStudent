@@ -22,9 +22,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by AdminPond on 6/5/2558.
- */
+
 public class ServerDB {
 
     protected String SubjectID;
@@ -35,8 +33,9 @@ public class ServerDB {
     protected String StatusQiz1;
     protected String SubjectID1;
 
-    protected int CountQR;
-    protected int CountShake;
+    protected int Count;
+
+    protected String sSID, sQr, sSh, sBa, sCh, sQi;
 
     //Insert
     public void Insert(String StudentID, String SubjectID) {
@@ -59,6 +58,29 @@ public class ServerDB {
         }
     }
     //end Insert
+
+    //Insert CheckName
+    public void InsertCheckName(String StudentID, String SubjectID, String Type) {
+        String url = "http://www.cm-smarthome.com/reg/checkname.php";
+
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("sStudentID", StudentID));
+        params.add(new BasicNameValuePair("sSubjectID", SubjectID));
+        params.add(new BasicNameValuePair("sType", Type));
+
+        String resultServer = getHttpPost(url, params);
+
+        String strStatusID = "0";
+        JSONObject c;
+        try {
+            c = new JSONObject(resultServer);
+            strStatusID = c.getString("StatusID");
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+    //end InsertCheckName
 
     //Insert Shake
     public void InsertShake(String StudentID, String SubjectID) {
@@ -197,7 +219,7 @@ public class ServerDB {
     //end LoadPathImage
 
     //get Count StudentID QR Code
-    public void getCountQR(String StudentID) {
+    public void getCount(String StudentID) {
         String url = "http://www.cm-smarthome.com/reg/testCount.php";
 
         List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -208,33 +230,43 @@ public class ServerDB {
         JSONObject c;
         try {
             c = new JSONObject(resultServer);
-            CountQR = Integer.valueOf(c.getString("CountQR"));
+            Count = Integer.valueOf(c.getString("CountQR"));
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
-    //end Count StudentID QR Code
+    //end Count StudentID
 
-    //get Count StudentID Shake
-    public void getCountShake(String StudentID) {
-        String url = "http://www.cm-smarthome.com/reg/testCountShake.php";
+    //getStatusCheck
+    public void getStatusCheck(String Date, String SubjectID) {
+        String url = "http://www.cm-smarthome.com/reg/getStatusCheck.php";
 
         List<NameValuePair> params = new ArrayList<NameValuePair>();
-        params.add(new BasicNameValuePair("sID", StudentID));
+        params.add(new BasicNameValuePair("sDate", Date));
+        params.add(new BasicNameValuePair("sSubjectID", SubjectID));
 
         String resultServer = getHttpPost(url, params);
 
         JSONObject c;
         try {
             c = new JSONObject(resultServer);
-            CountShake = Integer.valueOf(c.getString("CountS"));
+            sSID = c.getString("SubjectID");
+            if (sSID.equals("null")) {
+                sSID = "null";
+            } else {
+                sQr = c.getString("Qr");
+                sSh = c.getString("Sh");
+                sBa = c.getString("Ba");
+                sCh = c.getString("Ch");
+                sQi = c.getString("Qi");
+            }
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
-    //end Count StudentID Shake
+    //end getStatusCheck
 
     public String getHttpPost(String url, List<NameValuePair> params) {
         StringBuilder str = new StringBuilder();

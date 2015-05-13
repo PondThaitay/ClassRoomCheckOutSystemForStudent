@@ -7,7 +7,8 @@
     <string name="title_section3">Shake It</string>
     <string name="title_section4">Mini Qiz</string>
     <string name="title_section5">Your Here Now</string>
-    <string name="title_section8">Studied Rate</string>
+    <string name="title_section8">Check Badge</string>
+    <string name="title_section9">History Check in</string>
 
     <string name="Q1">ข้อใดไม่ใช่ ขั้นตอนหลักในการทำงานของคอมพิวเตอร์ ?</string>
     <string name="ans1_1">ประมวลผล</string>
@@ -46,9 +47,12 @@
 
     <string name="action_example"></string>
 
-    <string name="app_id">1634938090083796</string>
+    <string name="app_id">1434413206860781</string>
     <string name="update_status">Post Status</string>
     <string name="post_image">Post Image</string>
 
     <string name="action_settings">Coming Soon</string>
+    <string name="title_activity_menu_check_in">MenuCheckIn</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>

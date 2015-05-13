@@ -16,9 +16,7 @@ import android.view.ViewGroup;
 
 import java.text.DecimalFormat;
 
-/**
- * Created by AdminPond on 5/5/2558.
- */
+
 public class Menu3 extends Fragment {
 
     ServerDB serverDB = new ServerDB();

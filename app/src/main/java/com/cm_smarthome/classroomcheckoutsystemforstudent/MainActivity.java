@@ -75,30 +75,22 @@ public class MainActivity extends ActionBarActivity
 
         switch (position) {
             case 0:
-                Objfragment = new Menu1();
-                mTitle = "Profile";
-                break;
-            case 1:
                 mTitle = "Study Schedule";
                 Objfragment = new Menu4();
                 break;
+            case 1:
+                Objfragment = new Menu1();
+                mTitle = "Profile";
+                break;
             case 2:
-                mTitle = "Scan QR Code";
-                Objfragment = new Menu2();
-                break;
-            case 3:
-                mTitle = "Shake It";
-                Objfragment = new Menu3();
-                break;
-            case 4:
-                mTitle = "Mini Qiz";
-                Objfragment = new Menu6();
-                break;
-            case 5:
-                mTitle = "Studied Rate";
+                mTitle = "Check Badge";
                 Objfragment = new Menu8();
                 break;
-            case 6:
+            case 3:
+                mTitle = "History Check in";
+                Objfragment = new MenuHistory();
+                break;
+            case 4:
                 mTitle = "Your Here Now";
                 Objfragment = new Menu5();
                 break;
@@ -201,13 +193,11 @@ public class MainActivity extends ActionBarActivity
                 finish();
             }
         });
-
         dialog.setNegativeButton("ไม่ใช่", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
             }
         });
-
         dialog.show();
     }
 }

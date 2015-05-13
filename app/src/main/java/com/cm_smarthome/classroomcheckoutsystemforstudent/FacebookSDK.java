@@ -25,9 +25,7 @@ import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
 import com.facebook.widget.LoginButton.UserInfoChangedCallback;
 
-/**
- * Created by AdminPond on 8/5/2558.
- */
+
 public class FacebookSDK extends FragmentActivity {
 
     Context context = this;
@@ -134,6 +132,9 @@ public class FacebookSDK extends FragmentActivity {
                         R.drawable.better);
             } else if (im.equals("1")) {
                 img = BitmapFactory.decodeResource(getResources(),
+                        R.drawable.first);
+            } else if (im.equals("0")) {
+                img = BitmapFactory.decodeResource(getResources(),
                         R.drawable.good);
             }
             Request uploadRequest = Request.newUploadPhotoRequest(
@@ -221,5 +222,4 @@ public class FacebookSDK extends FragmentActivity {
         super.onSaveInstanceState(savedState);
         uiHelper.onSaveInstanceState(savedState);
     }
-
 }

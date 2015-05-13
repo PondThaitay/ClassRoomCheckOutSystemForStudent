@@ -13,9 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-/**
- * Created by AdminPond on 5/5/2558.
- */
+
 public class Menu2 extends Fragment {
 
     ServerDB serverDB = new ServerDB();
